@@ -4,7 +4,7 @@
  * @link http://bryantan.info
  */
 
-namespace bryglen\sendgrid;
+namespace yurkinx\sendgrid;
 
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
