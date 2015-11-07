@@ -222,7 +222,7 @@ class Message extends BaseMessage
     {
         $string = '';
         foreach ($this->getSendGridMessage()->toWebFormat() as $key => $value) {
-            $string .= sprintf("%s:%s\n", $key, $value);
+            $string .= sprintf("%s:%s\n", $key, is_array($value)?$value[0]:$value);
         }
         return $string;
     }
