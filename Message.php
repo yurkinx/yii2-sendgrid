@@ -8,6 +8,7 @@
 
 namespace yurkinx\sendgrid;
 
+use yii\helpers\Json;
 use yii\mail\BaseMessage;
 
 class Message extends BaseMessage
@@ -222,7 +223,7 @@ class Message extends BaseMessage
     {
         $string = '';
         foreach ($this->getSendGridMessage()->toWebFormat() as $key => $value) {
-            $string .= sprintf("%s:%s\n", $key, is_array($value)?$value[0]:$value);
+            $string .= sprintf("%s:%s\n", $key, is_array($value)?Json::encode($value):$value);
         }
         return $string;
     }
