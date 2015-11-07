@@ -1,5 +1,5 @@
 {
-    "name": "bryglen/yii2-sendgrid",
+    "name": "yurkinx/yii2-sendgrid",
     "description": "Sendgrid Mailer for Yii 2",
     "type": "yii2-extension",
     "keywords": ["yii2", "extension", "sendgrid", "bryglen"],
@@ -16,7 +16,7 @@
 	},
     "autoload": {
         "psr-4": {
-            "bryglen\\sendgrid\\": ""
+            "yurkinx\\sendgrid\\": ""
         }
     }
 }
