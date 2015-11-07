@@ -208,7 +208,13 @@ class Message extends BaseMessage
     {
         // no available method for sendgrid
     }
-
+  
+    
+    public function setCategrory($category)
+    {
+        $this->getSendGridMessage()->setCategory($category);
+        return $this;
+    }
     /**
      * @inheritdoc
      */
