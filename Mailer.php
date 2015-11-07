@@ -51,7 +51,7 @@ class Mailer extends BaseMailer
     /**
      * @var string message default class name.
      */
-    public $messageClass = 'bryglen\sendgrid\Message';
+    public $messageClass = 'yurkinx\sendgrid\Message';
     /**
      * @var string the username for the sendgrid api
      */
