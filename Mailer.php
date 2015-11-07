@@ -122,7 +122,8 @@ class Mailer extends BaseMailer
 
         $this->setRawResponse($this->getSendGridMailer()->send($message->getSendGridMessage()));
         $responseArray = Json::decode($this->getRawResponse());
-
+        Yii::info($responseArray);
+        return true;
         if (!isset($responseArray['message'])) {
             throw new \Exception('Invalid SendGrid response format');
         } elseif ($responseArray['message'] === "success") {
