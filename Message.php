@@ -210,7 +210,7 @@ class Message extends BaseMessage
     }
   
     
-    public function setCategrory($category)
+    public function setCategory($category)
     {
         $this->getSendGridMessage()->setCategory($category);
         return $this;
