@@ -219,6 +219,7 @@ class Message extends BaseMessage
     public function setSendAt($timestamp)
     {
         $this->getSendGridMessage()->setSendAt($timestamp);
+        return $this;
     }
     /**
      * @inheritdoc
