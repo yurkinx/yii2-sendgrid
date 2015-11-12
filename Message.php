@@ -216,6 +216,10 @@ class Message extends BaseMessage
         $this->getSendGridMessage()->setCategory($category);
         return $this;
     }
+    public function setSendAt($timestamp)
+    {
+        $this->getSendGridMessage()->setSendAt($timestamp);
+    }
     /**
      * @inheritdoc
      */
