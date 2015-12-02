@@ -216,6 +216,14 @@ class Message extends BaseMessage
         $this->getSendGridMessage()->setCategory($category);
         return $this;
     }
+     /**
+     * @return array categories
+     */
+    public function getCategories(){
+        
+        return $this->getSendGridMessage()->getSmtpapi()->category;
+    }
+    
     public function setSendAt($timestamp)
     {
         $this->getSendGridMessage()->setSendAt($timestamp);
