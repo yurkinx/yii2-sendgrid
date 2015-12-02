@@ -46,6 +46,13 @@ class Message extends BaseMessage
     {
         return $this->getSendGridMessage()->getFrom();
     }
+    /**
+     * @inheritdoc
+     */
+    public function getFromName()
+    {
+        return $this->getSendGridMessage()->getFromName();
+    }
 
     /**
      * @inheritdoc
