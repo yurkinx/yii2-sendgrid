@@ -53,14 +53,10 @@ class Mailer extends BaseMailer
      */
     public $messageClass = 'yurkinx\sendgrid\Message';
     /**
-     * @var string the username for the sendgrid api
-     */
-    public $username;
-    /**
      *
-     * @var string the password for the sendgrid api
+     * @var string the api_key for the sendgrid api
      */
-    public $password;
+    public $api_key;
     /**
      * @var array a list of options for the sendgrid api
      */
@@ -84,7 +80,7 @@ class Mailer extends BaseMailer
     public function getSendGridMailer()
     {
         if (!is_object($this->_sendGridMailer)) {
-            $this->_sendGridMailer = $this->createSendGridMailer($this->username, $this->password, $this->options);
+            $this->_sendGridMailer = $this->createSendGridMailer($this->api_key, $this->options);
         }
 
         return $this->_sendGridMailer;
@@ -92,20 +88,16 @@ class Mailer extends BaseMailer
 
     /**
      * Create send grid mail instance
-     * @param string $username the username for the sendgrid api
-     * @param string $password the password for the sendgrid api
+     * @param string $api_key the api_key for the sendgrid api
      * @return \SendGrid
      * @throws \yii\base\InvalidConfigException
      */
-    public function createSendGridMailer($username, $password, $options)
+    public function createSendGridMailer($api_key, $options)
     {
-        if (!$username) {
-            throw new InvalidConfigException("Username cannot be empty.");
+        if (!$api_key) {
+            throw new InvalidConfigException("Api key cannot be empty.");
         }
-        if (!$password) {
-            throw new InvalidConfigException("Password cannot be empty.");
-        }
-        $sendgrid = new \SendGrid($username, $password , $options);
+        $sendgrid = new \SendGrid($api_key , $options);
 
         return $sendgrid;
     }
