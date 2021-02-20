@@ -91,7 +91,7 @@ class Message extends BaseMessage
      */
     public function getTo()
     {
-        return $this->getSendGridMessage()->to;
+        return $this->getSendGridMessage()->getPersonalization()->getTos()[0];
     }
 
     /**
