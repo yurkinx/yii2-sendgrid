@@ -107,25 +107,10 @@ class Mailer extends BaseMailer
      */
     public function sendMessage($message)
     {
-        $address = $message->getTo();
-        if (is_array($address)) {
-            $address = implode(', ', array_keys($address));
-        }
-
+       
+  
         $this->setRawResponse($this->getSendGridMailer()->send($message->getSendGridMessage()));
-        $responseArray = Json::decode($this->getRawResponse());
-        
-        if (!isset($responseArray['body']['message'])) {
-            throw new \Exception('Invalid SendGrid response format');
-        } elseif ($responseArray['body']['message'] === "success") {
-            // reset the error if success
-            $this->setErrors(array());
-            return true;
-        } elseif (isset($responseArray['errors'])) {
-            // reset the error if success
-            $this->setErrors($responseArray['errors']);
-            return false;
-        }
+       
     }
 
     /**
