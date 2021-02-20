@@ -113,7 +113,8 @@ class Message extends BaseMessage
      */
     public function getCc()
     {
-        return $this->getSendGridMessage()->getCcs();
+       // return $this->getSendGridMessage()->getCcs();
+        return '';
     }
 
     /**
@@ -131,7 +132,7 @@ class Message extends BaseMessage
      */
     public function getBcc()
     {
-        return $this->getSendGridMessage()->getBccs();
+        return '';
     }
 
     /**
