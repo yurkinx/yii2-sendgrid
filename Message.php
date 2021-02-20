@@ -18,7 +18,7 @@ class Message extends BaseMessage
     public function getSendGridMessage()
     {
         if (!is_object($this->_sendGridMessage)) {
-            $this->_sendGridMessage = new \SendGrid\Email();
+            $this->_sendGridMessage = new \SendGrid\Mail\Mail();
         }
         return $this->_sendGridMessage;
     }
@@ -60,8 +60,7 @@ class Message extends BaseMessage
     public function setFrom($from)
     {
         if (is_array($from)) {
-            $this->getSendGridMessage()->setFrom(key($from));
-            $this->getSendGridMessage()->setFromName(current($from));
+            $this->getSendGridMessage()->setFrom(key($from), current($from));
         } else {
             $this->getSendGridMessage()->setFrom($from);
         }
@@ -101,7 +100,7 @@ class Message extends BaseMessage
     public function setTo($to)
     {
         if (is_array($to)) {
-            $this->getSendGridMessage()->setTos($to);
+            $this->getSendGridMessage()->addTos($to);
         } else {
             $this->getSendGridMessage()->addTo($to);
         }
@@ -168,7 +167,7 @@ class Message extends BaseMessage
      */
     public function setTextBody($text)
     {
-        $this->getSendGridMessage()->setText($text);
+        $this->getSendGridMessage()->addContent("text/plain",$text);
 
         return $this;
     }
@@ -178,7 +177,7 @@ class Message extends BaseMessage
      */
     public function setHtmlBody($html)
     {
-        $this->getSendGridMessage()->setHtml($html);
+        $this->getSendGridMessage()->addContent("text/html", $html);
 
         return $this;
     }
@@ -220,7 +219,7 @@ class Message extends BaseMessage
     
     public function setCategory($category)
     {
-        $this->getSendGridMessage()->setCategory($category);
+        $this->getSendGridMessage()->addCategory($category);
         return $this;
     }
      /**
@@ -242,9 +241,9 @@ class Message extends BaseMessage
     public function toString()
     {
         $string = '';
-        foreach ($this->getSendGridMessage()->toWebFormat() as $key => $value) {
-            $string .= sprintf("%s:%s\n", $key, is_array($value)?Json::encode($value):$value);
-        }
+//         foreach ($this->getSendGridMessage()->toWebFormat() as $key => $value) {
+//             $string .= sprintf("%s:%s\n", $key, is_array($value)?Json::encode($value):$value);
+//         }
         return $string;
     }
 } 
